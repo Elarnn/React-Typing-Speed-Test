@@ -24,3 +24,20 @@
 	border-radius: 10px;
 	box-shadow: 0 20px 40px rgba(0, 0, 0, 0);
 }
+
+.text-display {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.correct {
+    color: green;
+}
+
+.current {
+    border-bottom: 2px solid black;
+}
+
+.remaining {
+    color: gray;
+}
