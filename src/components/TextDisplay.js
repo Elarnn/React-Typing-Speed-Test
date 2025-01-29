@@ -1,9 +1,13 @@
-const TextDisplay = ({ targetText, position }) => {
+import "../css/TextDisplay.css"; // Импортируем стили
+
+const TextDisplay = ({ targetText, position, isError }) => {
     return (
-        <p style={{ fontSize: "24px", marginTop: "20px" }}>
-            <span style={{ color: "green" }}>{targetText.slice(0, position)}</span>
-            <span style={{ borderBottom: "2px solid black" }}>{targetText[position] || " "}</span>
-            <span style={{ color: "gray" }}>{targetText.slice(position + 1)}</span>
+        <p className="text-display">
+            <span className="text-correct">{targetText.slice(0, position)}</span>
+            <span className={`text-current ${isError ? "text-error" : ""}`}>
+                {targetText[position] || " "}
+            </span>
+            <span className="text-remaining">{targetText.slice(position + 1)}</span>
         </p>
     );
 };
