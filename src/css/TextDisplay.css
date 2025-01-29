@@ -5,18 +5,42 @@
 
 .text-correct {
     color: green;
+    border-radius: 10px; /* Закругляем углы у правильного текста */
 }
 
- 
 .text-current {
-    border-bottom: 2px solid black;
+    position: relative;
+    display: inline-block;
+    min-width: 6px; /* Гарантируем, что пробел занимает место */
+}
+
+/* Красный фон при ошибке */
+.text-error {
+    background-color: red;
+    border-radius: 10px;
     transition: background-color 0.3s ease;
 }
 
-.text-error {
-    background-color: red;
+/* Кастомный текстовый курсор */
+.text-cursor {
+    position: absolute;
+    left: -1px; /* Ставим курсор вплотную к тексту */
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: black;
+    animation: blink 1s infinite;
 }
 
+/* Серый текст - ещё не введённые буквы */
 .text-remaining {
     color: gray;
+    white-space: pre;
+}
+
+/* Анимация мигания курсора */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
 }
