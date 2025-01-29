@@ -1,8 +1,9 @@
 import { useState } from "react";
 import useKeyListener from "./components/KeyListener";
 import TextDisplay from "./components/TextDisplay";
+import "./css/App.css"
 
-const targetText = "Привет, мир!"; // Фиксированный текст
+const targetText = "Экосистема - это совокупность живых организмов и окружающей их неживой среды";
 
 const App = () => {
     const [position, setPosition] = useState(0);
@@ -18,13 +19,14 @@ const App = () => {
     };
 
     return (
-        <div style={{ textAlign: "center", marginTop: "50px" }}>
-            <button onClick={() => setIsListening(true)} disabled={isListening}>
-                Начать
-            </button>
-            <button onClick={reset}>Заново</button>
-
+        <div className="container">
             <TextDisplay targetText={targetText} position={position} isError={isError} />
+            <div className="button-container">
+              <button onClick={() => setIsListening(true)} disabled={isListening}>
+                  Начать
+              </button>
+              <button onClick={reset}>Заново</button>
+            </div>
         </div>
     );
 };
