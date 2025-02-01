@@ -3,6 +3,7 @@ import useKeyListener from "./components/KeyListener";
 import TextDisplay from "./components/TextDisplay";
 import "./css/App.css"
 
+
 const targetText = "Экосистема - это совокупность живых организмов и окружающей их неживой среды";
 
 const App = () => {

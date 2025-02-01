@@ -1,0 +1,22 @@
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    background-color: #1d1d1d;
+    background-image: url("../assets/keyboard.png");
+    background-size: 100px 100px;
+    background-position: 0 0, 50px 50px, 50px 0px;
+    animation: scroll 9s linear infinite;
+    z-index: -1;
+  }
+  
+  @keyframes scroll {
+    from { background-position: 0 0, 50px 50px, 50px 0; }
+    to { background-position: -100px -100px, -50px -50px, -50px -100px; }
+  }
+  
+  
