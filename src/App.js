@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import useKeyListener from "./components/KeyListener";
 import TextDisplay from "./components/TextDisplay";
+import { GrPowerReset } from "react-icons/gr";
 import "./css/App.css";
 
 const targetText = "Экосистема - это совокупность живых организмов и окружающей их неживой среды с живых организмов и окружающей их неживой среды Экосистема - это совокупность живых организмов и окружающей их неживой среды";
@@ -39,11 +40,16 @@ const App = () => {
                 scrollOffset={scrollOffset} 
                 currentRef={currentRef}
             />
-            <div className="button-container">
-                <button onClick={() => setIsListening(true)} disabled={isListening}>
+            {/* <div className="blur">
+            <button id="start" onClick={() => setIsListening(true)} disabled={isListening}>
                     Начать
                 </button>
-                <button onClick={reset}>Заново</button>
+            </div> */}
+            <div className="button-container">
+            <button id="start" onClick={() => setIsListening(true)} disabled={isListening}>
+                    Начать
+                </button>
+                <GrPowerReset id="reset" size={30} onClick={reset} />
             </div>
         </div>
     );

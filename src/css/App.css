@@ -13,7 +13,7 @@
     box-shadow: 0 0 30px rgba(109, 109, 109, 0.15);
 }
 
-button {
+#start {
 	color:#000000;
 	background-color: #f0f0f0;
 	border: none;
@@ -22,6 +22,22 @@ button {
 	font-size: 14px;
     margin: 10px;
   }
+#reset {
+	color: white;
+	background: none;
+	size: 20;
+}
+
+.blur {
+	position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  /* если нужен эффект размытия, можно добавить: */
+  backdrop-filter: blur(8px);
+}
 
 button:active {
     transform: scale(0.95); /* Кнопка немного уменьшается */
