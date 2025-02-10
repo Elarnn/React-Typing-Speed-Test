@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import useKeyListener from "./components/KeyListener";
 import TextDisplay from "./components/TextDisplay";
+import { getTargetText } from "./components/getTargetTexts.js"
 import { GrPowerReset } from "react-icons/gr";
 import "./css/App.css";
 
-const targetText = "Экосистема - это совокупность живых организмов и окружающей их неживой среды с живых организмов и окружающей их неживой среды Экосистема - это совокупность живых организмов и окружающей их неживой среды";
-
 const App = () => {
+    const [targetText, setTargetText] = useState(getTargetText());
     const [position, setPosition] = useState(0);
     const [isListening, setIsListening] = useState(false);
     const [isError, setIsError] = useState(false);
@@ -29,6 +29,7 @@ const App = () => {
         setIsListening(false);
         setIsError(false);
         setScrollOffset(0);
+        setTargetText(getTargetText());
     };
 
     return (
