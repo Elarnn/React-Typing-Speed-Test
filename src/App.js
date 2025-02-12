@@ -10,6 +10,7 @@ const App = () => {
     const [position, setPosition] = useState(0);
     const [isListening, setIsListening] = useState(false);
     const [isError, setIsError] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
     const [scrollOffset, setScrollOffset] = useState(0);
     const currentRef = useRef(null);
 
@@ -32,6 +33,11 @@ const App = () => {
         setTargetText(getTargetText());
     };
 
+    const start = () => {
+        setIsVisible(false);
+        setIsListening(true)
+    }
+
     return (
         <div className="container">
             <TextDisplay 
@@ -41,15 +47,12 @@ const App = () => {
                 scrollOffset={scrollOffset} 
                 currentRef={currentRef}
             />
-            {/* <div className="blur">
-            <button id="start" onClick={() => setIsListening(true)} disabled={isListening}>
+            {isVisible && (<div className="blur">
+            <button onClick={() => start()} disabled={isListening}>
                     Начать
                 </button>
-            </div> */}
+            </div>)}
             <div className="button-container">
-            <button id="start" onClick={() => setIsListening(true)} disabled={isListening}>
-                    Начать
-                </button>
                 <GrPowerReset id="reset" size={30} onClick={reset} />
             </div>
         </div>

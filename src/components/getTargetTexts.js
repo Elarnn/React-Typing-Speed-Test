@@ -1,6 +1,12 @@
 import targetTexts from "../assets/targetTexts.json";
 
+let previousIndex = -1;
+
 export const getTargetText = () => {
-    const randomIndex = Math.floor(Math.random() * targetTexts.length);
+    let randomIndex;
+    do {
+       randomIndex = Math.floor(Math.random() * targetTexts.length);
+    } while (randomIndex === previousIndex)
+    previousIndex = randomIndex;
     return targetTexts[randomIndex];
 };

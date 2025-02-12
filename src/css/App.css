@@ -11,17 +11,33 @@
 	left: 50%;
 	border-radius: 15px;
     box-shadow: 0 0 30px rgba(109, 109, 109, 0.15);
+    z-index: 1;
 }
 
-#start {
+button {
 	color:#000000;
-	background-color: #f0f0f0;
-	border: none;
-	border-radius: 5px;
-	padding: 10px 30px;
+	background-color: #eeeeee;
+    border: solid;
+    border-color: rgb(182, 182, 182);
+	border-radius: 10px;
+    padding: 15px 40px;
 	font-size: 14px;
     margin: 10px;
-  }
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0px 7px 0px rgb(182, 182, 182); /* Имитация нижней границы */
+}
+
+button:hover {
+    box-shadow: 0px 10px 0px rgb(182, 182, 182); 
+    transform: translateY(-3px);
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 0px 3px 0px rgb(182, 182, 182);
+}
+
+
 #reset {
 	color: white;
 	background: none;
@@ -30,18 +46,16 @@
 
 .blur {
 	position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  /* если нужен эффект размытия, можно добавить: */
-  backdrop-filter: blur(8px);
-}
-
-button:active {
-    transform: scale(0.95); /* Кнопка немного уменьшается */
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2); /* Тень внутрь */
+    top: 5px;
+    left: 5px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
 }
 
 .button-container {
@@ -49,5 +63,6 @@ button:active {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 1;
 }
 
