@@ -38,23 +38,26 @@ button:active {
 }
 
 
-#reset {
+.resetBtn {
 	color: white;
 	background: none;
 	size: 20;
 }
 
+.rotate-360 {
+    transform: rotate(360deg);
+    transition: transform 1s linear;
+  }
+
 .blur {
 	position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 100%;
-    height: 100%;
+    inset: 5px;
     text-align: center;
     backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
     z-index: 2;
 }
 

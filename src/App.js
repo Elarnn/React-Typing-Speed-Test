@@ -12,6 +12,7 @@ const App = () => {
     const [isError, setIsError] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [scrollOffset, setScrollOffset] = useState(0);
+    const [isRotating, setIsRotating] = useState(false);
     const currentRef = useRef(null);
 
     // Обработка скролла при изменении позиции курсора
@@ -31,12 +32,15 @@ const App = () => {
         setIsError(false);
         setScrollOffset(0);
         setTargetText(getTargetText());
+        setIsRotating(true); // Rotating animation
+        setTimeout(() => setIsRotating(false), 1000);
     };
 
     const start = () => {
         setIsVisible(false);
         setIsListening(true)
     }
+
 
     return (
         <div className="container">
@@ -53,7 +57,7 @@ const App = () => {
                 </button>
             </div>)}
             <div className="button-container">
-                <GrPowerReset id="reset" size={30} onClick={reset} />
+                <GrPowerReset className={`resetBtn ${isRotating ? "rotate-360" : ""}`} size={30} onClick={reset} />
             </div>
         </div>
     );
