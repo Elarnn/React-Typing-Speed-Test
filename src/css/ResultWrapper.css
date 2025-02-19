@@ -1,0 +1,12 @@
+.result-wrapper {
+	position: absolute;
+    background-color: rgb(52,53,65);
+    color: white;
+    inset: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 2;
+}

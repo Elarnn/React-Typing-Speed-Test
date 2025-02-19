@@ -5,16 +5,19 @@ import Timer from "./components/Timer.js";
 import { getTargetText } from "./components/getTargetTexts.js"
 import { GrPowerReset } from "react-icons/gr";
 import "./css/App.css";
+import ResultWrapper from "./components/ResultWrapper.js";
 
 const App = () => {
     const [targetText, setTargetText] = useState(getTargetText());
     const [position, setPosition] = useState(0);
     const [isListening, setIsListening] = useState(false);
     const [isError, setIsError] = useState(false);
-    const [isVisible, setIsVisible] = useState(true);
+    const [isBlurVisible, setIsBlurVisible] = useState(true);
+    const [isResultVisible, setIsResultVisible] = useState(false);
     const [scrollOffset, setScrollOffset] = useState(0);
     const [isRotating, setIsRotating] = useState(false);
-    const [isRunning, setIsRunning] = useState(false);
+    const [isTimerRunning, setIsTimerRunning] = useState(false);
+    const [resetKey, setResetKey] = useState(0); // Ключ для сброса таймера
     const currentRef = useRef(null);
 
     // Обработка скролла при изменении позиции курсора
@@ -30,18 +33,24 @@ const App = () => {
 
     const reset = () => {
         setPosition(0);
-        setIsListening(false);
         setIsError(false);
         setScrollOffset(0);
         setTargetText(getTargetText());
+        setResetKey((prev) => prev + 1); // Изменяем ключ, чтобы сбросить таймер
         setIsRotating(true); // Rotating animation
         setTimeout(() => setIsRotating(false), 1000);
     };
 
     const start = () => {
-        setIsVisible(false);
+        setIsBlurVisible(false);
         setIsListening(true);
-        setIsRunning(true);
+        setIsTimerRunning(true);
+    }
+
+    const end = () => {
+        setIsResultVisible(true);
+        setIsListening(false);
+        setIsTimerRunning(false);
     }
 
 
@@ -56,15 +65,20 @@ const App = () => {
                 currentRef={currentRef}
             />
 
-            {isVisible && (<div className="blur">
-                <button onClick={start} disabled={isListening}>
-                    Start test
-                </button>
-            </div>)}
+            {isResultVisible && (
+                <ResultWrapper/>
+                )}
+
+            {isBlurVisible && (
+                <div className="blur">
+                    <button onClick={start} disabled={isListening}>
+                        Start test
+                    </button>
+                </div>)}
 
             <div className="controls-container">
                 <GrPowerReset className={`resetBtn ${isRotating ? "rotate-360" : ""}`} size={30} onClick={reset} />
-                <Timer isRunning={isRunning} />
+                <Timer key={resetKey} isRunning={isTimerRunning} onEnd={end}/>
             </div>
 
         </div>
