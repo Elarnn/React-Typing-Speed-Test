@@ -14,6 +14,7 @@ const App = () => {
     const [isVisible, setIsVisible] = useState(true);
     const [scrollOffset, setScrollOffset] = useState(0);
     const [isRotating, setIsRotating] = useState(false);
+    const [isRunning, setIsRunning] = useState(false);
     const currentRef = useRef(null);
 
     // Обработка скролла при изменении позиции курсора
@@ -39,7 +40,8 @@ const App = () => {
 
     const start = () => {
         setIsVisible(false);
-        setIsListening(true)
+        setIsListening(true);
+        setIsRunning(true);
     }
 
 
@@ -55,14 +57,14 @@ const App = () => {
             />
 
             {isVisible && (<div className="blur">
-                <button onClick={() => start()} disabled={isListening}>
+                <button onClick={start} disabled={isListening}>
                     Start test
                 </button>
             </div>)}
 
             <div className="controls-container">
                 <GrPowerReset className={`resetBtn ${isRotating ? "rotate-360" : ""}`} size={30} onClick={reset} />
-                <Timer/>
+                <Timer isRunning={isRunning} />
             </div>
 
         </div>

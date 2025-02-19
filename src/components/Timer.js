@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import "../css/Timer.css"
 
-export default function Timer() {
+export default function Timer({isRunning}) {
     const [timeLeft, setTimeLeft] = useState(60); // 60 секунд (1 минута)
 
     useEffect(() => {
-        if (timeLeft <= 0) return;
+        if (!isRunning || timeLeft <= 0) return;
 
         const timer = setInterval(() => {
             setTimeLeft((prevTime) => prevTime - 1);
         }, 1000);
 
         return () => clearInterval(timer);
-    }, [timeLeft]);
+    }, [isRunning, timeLeft]);
 
     // Форматирование в MM:SS
     const minutes = Math.floor(timeLeft / 60);
