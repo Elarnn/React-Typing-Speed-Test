@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import useKeyListener from "./components/KeyListener";
 import TextDisplay from "./components/TextDisplay";
+import Timer from "./components/Timer.js";
 import { getTargetText } from "./components/getTargetTexts.js"
 import { GrPowerReset } from "react-icons/gr";
 import "./css/App.css";
@@ -44,21 +45,26 @@ const App = () => {
 
     return (
         <div className="container">
-            <TextDisplay 
-                targetText={targetText} 
-                position={position} 
-                isError={isError} 
-                scrollOffset={scrollOffset} 
+
+            <TextDisplay
+                targetText={targetText}
+                position={position}
+                isError={isError}
+                scrollOffset={scrollOffset}
                 currentRef={currentRef}
             />
+
             {isVisible && (<div className="blur">
-            <button onClick={() => start()} disabled={isListening}>
-                    Начать
+                <button onClick={() => start()} disabled={isListening}>
+                    Start test
                 </button>
             </div>)}
-            <div className="button-container">
+
+            <div className="controls-container">
                 <GrPowerReset className={`resetBtn ${isRotating ? "rotate-360" : ""}`} size={30} onClick={reset} />
+                <Timer/>
             </div>
+
         </div>
     );
 };

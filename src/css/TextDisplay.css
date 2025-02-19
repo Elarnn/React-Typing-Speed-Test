@@ -2,7 +2,7 @@
 
 .text-wrapper {
     /* Фиксированная высота для отображения нескольких строк */
-    height: 115px; /* настройте по необходимости */
+    height: 115px;
     overflow: hidden;
     position: relative;
     padding-bottom: 60px;

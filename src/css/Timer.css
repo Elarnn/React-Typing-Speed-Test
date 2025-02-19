@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.timer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.timer-text {
+    font-size: 24px;
+    color: white;
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+}
