@@ -33,10 +33,10 @@ const App = () => {
 
     const reset = () => {
         setPosition(0);
-        setIsError(false);
         setScrollOffset(0);
+        setIsError(false);
         setTargetText(getTargetText());
-        setResetKey((prev) => prev + 1); // Изменяем ключ, чтобы сбросить таймер
+        setResetKey((prev) => prev + 1); // Change key to reset timer
         setIsRotating(true); // Rotating animation
         setTimeout(() => setIsRotating(false), 1000);
     };
