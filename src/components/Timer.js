@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import "../css/Timer.css";
 
 export default function Timer({ isRunning, onEnd }) {
-    const [timeLeft, setTimeLeft] = useState(60);
+    const [timeLeft, setTimeLeft] = useState(5);
     const timerRef = useRef(null); // Храним ID интервала
 
     useEffect(() => {
