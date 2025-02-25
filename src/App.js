@@ -17,6 +17,7 @@ const App = () => {
     const [scrollOffset, setScrollOffset] = useState(0);
     const [isRotating, setIsRotating] = useState(false);
     const [isTimerRunning, setIsTimerRunning] = useState(false);
+    const [timeLeft, setTimeLeft] = useState(5); // time left
     const [resetKey, setResetKey] = useState(0); // Ключ для сброса таймера
     const currentRef = useRef(null);
 
@@ -29,7 +30,7 @@ const App = () => {
         }
     }, [position]);
 
-    useKeyListener(isListening, position, setPosition, targetText, setIsError);
+    useKeyListener(isListening, position, setPosition, targetText, setIsError, setIsTimerRunning);
 
     const reset = () => {
         setPosition(0);
@@ -44,7 +45,6 @@ const App = () => {
     const start = () => {
         setIsBlurVisible(false);
         setIsListening(true);
-        setIsTimerRunning(true);
     }
 
     const end = () => {
@@ -66,7 +66,7 @@ const App = () => {
             />
 
             {isResultVisible && (
-                <ResultWrapper/>
+                <ResultWrapper timeLeft={timeLeft}/>
                 )}
 
             {isBlurVisible && (
@@ -78,7 +78,7 @@ const App = () => {
 
             <div className="controls-container">
                 <GrPowerReset className={`resetBtn ${isRotating ? "rotate-360" : ""}`} size={30} onClick={reset} />
-                <Timer key={resetKey} isRunning={isTimerRunning} onEnd={end}/>
+                <Timer key={resetKey} isRunning={isTimerRunning} timeLeft={timeLeft} setTimeLeft={setTimeLeft} onEnd={end}/>
             </div>
 
         </div>

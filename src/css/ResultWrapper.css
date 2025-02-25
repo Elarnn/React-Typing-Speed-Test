@@ -3,10 +3,33 @@
     background-color: rgb(52,53,65);
     color: white;
     inset: 5px;
+    gap: 20px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
     z-index: 2;
+}
+
+.accur-disp {
+    min-width: 190px;
+    min-height: 120px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: orange;
+}
+
+.wpm-disp {
+    min-width: 190px;
+    min-height: 120px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: purple;
 }

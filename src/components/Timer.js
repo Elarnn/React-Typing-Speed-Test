@@ -1,8 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import "../css/Timer.css";
 
-export default function Timer({ isRunning, onEnd }) {
-    const [timeLeft, setTimeLeft] = useState(5);
+export default function Timer({ isRunning, onEnd, timeLeft, setTimeLeft }) {
     const timerRef = useRef(null); // Храним ID интервала
 
     useEffect(() => {
@@ -10,13 +9,12 @@ export default function Timer({ isRunning, onEnd }) {
             clearInterval(timerRef.current); // Чистим старый интервал
             return;
         }
-
         timerRef.current = setInterval(() => {
             setTimeLeft((prevTime) => prevTime - 1);
         }, 1000);
 
         return () => clearInterval(timerRef.current);
-    }, [isRunning, timeLeft]);
+    }, [isRunning, timeLeft, setTimeLeft]);
     useEffect(() => {
         if (timeLeft === 0 && onEnd) {
             clearInterval(timerRef.current);

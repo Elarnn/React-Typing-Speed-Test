@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { setErrorCount, getErrorCount, setRightCount, getRightCount } from "./TypingStats";
 
-const useKeyListener = (isListening, position, setPosition, targetText, setIsError) => {
+const useKeyListener = (isListening, position, setPosition, targetText, setIsError, setIsTimerRunning) => {
     useEffect(() => {
         if (!isListening) return;
 
@@ -24,11 +24,12 @@ const useKeyListener = (isListening, position, setPosition, targetText, setIsErr
                     setErrorCount(getErrorCount() + 1);
                 }
             }
+            setIsTimerRunning(true);
         };
 
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [isListening, position, targetText, setPosition, setIsError]);
+    }, [isListening, position, targetText, setPosition, setIsError, setIsTimerRunning]);
 };
 
 export default useKeyListener;
