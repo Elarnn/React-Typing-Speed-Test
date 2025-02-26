@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
 .text-wrapper {
     /* Фиксированная высота для отображения нескольких строк */
     height: 115px;
@@ -16,10 +14,10 @@
     font-family: "Montserrat", serif;
     font-weight: 400;
     max-width: 100%;
-    transition: transform 0.3s ease-in-out; /* для плавного скролла */
+    transition: transform 0.3s ease-in-out; /* for smooth scroll */
 }
 .text-word {
-    display: inline-block; /* Каждое слово как блок */
+    display: inline-block; /* Every word as a block */
   }
 .text-correct {
     color: rgb(0, 202, 0);
@@ -38,7 +36,7 @@
     transition: background-color 0.3s ease;
 }
 
-/* Кастомный текстовый курсор */
+/* Custom text cursor */
 .text-cursor {
     position: absolute;
     left: -1px;
@@ -53,7 +51,7 @@
     white-space: normal;
 }
 
-/* Анимация мигания курсора */
+/* Cursor blinking animation */
 @keyframes blink {
     0% { opacity: 1; }
     50% { opacity: 0; }

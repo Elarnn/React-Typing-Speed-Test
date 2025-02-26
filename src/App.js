@@ -17,7 +17,8 @@ const App = () => {
     const [scrollOffset, setScrollOffset] = useState(0);
     const [isRotating, setIsRotating] = useState(false);
     const [isTimerRunning, setIsTimerRunning] = useState(false);
-    const [timeLeft, setTimeLeft] = useState(5); // time left
+    const [timeLeft, setTimeLeft] = useState(1); // time left
+    const [givenTime] = useState(timeLeft);
     const [resetKey, setResetKey] = useState(0); // Ключ для сброса таймера
     const currentRef = useRef(null);
 
@@ -66,7 +67,7 @@ const App = () => {
             />
 
             {isResultVisible && (
-                <ResultWrapper timeLeft={timeLeft}/>
+                <ResultWrapper timeLeft={timeLeft} givenTime={givenTime}/>
                 )}
 
             {isBlurVisible && (

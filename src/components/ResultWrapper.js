@@ -2,20 +2,45 @@ import "../css/ResultWrapper.css"
 import { getErrorCount, getRightCount } from "./TypingStats"
 
 
-export default function ResultWrapper() {
-    const totalTyped = getRightCount() + getErrorCount()
-    const accuracy = ((getRightCount() / totalTyped) * 100).toFixed(2);
+export default function ResultWrapper({ givenTime }) {
 
-    const WPM = totalTyped / 5;
+    function calculateTypingSpeed() {
+        const rightCount = getRightCount();
+        const errorCount = getErrorCount();
+        const totalAttempts = rightCount + errorCount;
+    
+        if (givenTime <= 0) return { CPM: 0, WPM: 0, accuracy: "0.00" };
+    
+        const CPM = (rightCount / givenTime) * 60;
+        const WPM = CPM / 5;
+        const accuracy = totalAttempts > 0 ? (rightCount / totalAttempts) * 100 : 100;
+    
+        return {  
+            WPM: WPM,
+            accuracy: accuracy.toFixed(2) 
+        };
+    }
+    const { WPM, accuracy } = calculateTypingSpeed(givenTime);
+
     return (
         <div className="result-wrapper">
-            <div className="accur-disp">
-                <div style={{justifyContent: 'center', marginTop: '10px'}}>Accuracy</div>
-                <span style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexGrow: '1'}}>{isNaN(accuracy) ? 0 : accuracy}%</span>
+            
+            <div className="res-block" style={{backgroundColor: 'orange'}}>
+                <div className="res-block-head" style={{ backgroundColor: '#1234' }}>
+                    <span style={{ marginTop: '5px', marginBottom: '5px' }}>Accuracy</span>
+                </div>
+                <div className="res-block-content">
+                    <span style={{ fontSize: '40px' }} >{accuracy}%</span>
+                </div>
             </div>
-            <div className="wpm-disp">
-                <div style={{justifyContent: 'center', marginTop: '10px'}}>Words per minute</div>
-                <span style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexGrow: '1'}}>{WPM}</span>
+
+            <div className="res-block" style={{backgroundColor: 'purple'}}>
+                <div className="res-block-head" style={{ backgroundColor: '#1234' }}>
+                    <span style={{ marginTop: '5px', marginBottom: '5px' }}>WPM</span>
+                </div>
+                <div className="res-block-content">
+                    <span style={{ fontSize: '40px' }} >{WPM}</span>
+                </div>
             </div>
         </div>
     )
