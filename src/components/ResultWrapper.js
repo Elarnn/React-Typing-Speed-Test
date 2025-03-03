@@ -42,6 +42,7 @@ export default function ResultWrapper({ givenTime }) {
                     <span style={{ fontSize: '40px' }} >{WPM}</span>
                 </div>
             </div>
+
         </div>
     )
 }

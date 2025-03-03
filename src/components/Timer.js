@@ -1,20 +1,28 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../css/Timer.css";
 
-export default function Timer({ isRunning, onEnd, timeLeft, setTimeLeft }) {
-    const timerRef = useRef(null); // Храним ID интервала
+export default function Timer({ isRunning, onEnd, initialTime, resetKey }) {
+    const [timeLeft, setTimeLeft] = useState(initialTime);
+    const timerRef = useRef(null);
 
+    // Сбрасываем таймер при изменении resetKey
+    useEffect(() => {
+        setTimeLeft(initialTime);
+    }, [resetKey, initialTime]);
+
+    // Запуск таймера
     useEffect(() => {
         if (!isRunning || timeLeft <= 0) {
-            clearInterval(timerRef.current); // Чистим старый интервал
+            clearInterval(timerRef.current);
             return;
         }
         timerRef.current = setInterval(() => {
             setTimeLeft((prevTime) => prevTime - 1);
         }, 1000);
-
         return () => clearInterval(timerRef.current);
-    }, [isRunning, timeLeft, setTimeLeft]);
+    }, [isRunning, timeLeft]);
+
+    // Завершение таймера
     useEffect(() => {
         if (timeLeft === 0 && onEnd) {
             clearInterval(timerRef.current);
@@ -22,7 +30,6 @@ export default function Timer({ isRunning, onEnd, timeLeft, setTimeLeft }) {
         }
     }, [timeLeft, onEnd]);
 
-    // Форматирование в MM:SS
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
     const formattedTime = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
