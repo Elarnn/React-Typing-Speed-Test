@@ -25,7 +25,7 @@ export default function ResultWrapper({ givenTime }) {
     return (
         <div className="result-wrapper">
             
-            <div className="res-block" style={{backgroundColor: 'orange'}}>
+            <div className="res-block" style={{backgroundColor: 'rgb(48, 50, 156)'}}>
                 <div className="res-block-head" style={{ backgroundColor: '#1234' }}>
                     <span style={{ marginTop: '5px', marginBottom: '5px' }}>Accuracy</span>
                 </div>
@@ -34,7 +34,7 @@ export default function ResultWrapper({ givenTime }) {
                 </div>
             </div>
 
-            <div className="res-block" style={{backgroundColor: 'purple'}}>
+            <div className="res-block" style={{backgroundColor: 'rgb(97, 48, 156)'}}>
                 <div className="res-block-head" style={{ backgroundColor: '#1234' }}>
                     <span style={{ marginTop: '5px', marginBottom: '5px' }}>WPM</span>
                 </div>

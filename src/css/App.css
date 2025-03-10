@@ -3,7 +3,7 @@
 .container {
 	width: 100vmin;
     min-height: 30vmin;
-	background-color: rgb(52,53,65);
+	background-color: #212121;
 	padding: 50px 30px;
 	position: absolute;
 	transform: translate(-50%, -50%);
@@ -11,7 +11,7 @@
 	top: 50%;
 	left: 50%;
 	border-radius: 15px;
-    box-shadow: 0 0 30px rgba(109, 109, 109, 0.15);
+    box-shadow: 0 0 30px rgba(100, 100, 100, 0.15);
     z-index: 1;
 }
 

@@ -1,6 +1,6 @@
 .result-wrapper {
 	position: absolute;
-    background-color: rgb(52,53,65);
+    background-color: none;
     color: white;
     inset: 5px;
     gap: 20px;
@@ -22,7 +22,6 @@
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    background-color: orange;
     overflow: hidden
 }
 
