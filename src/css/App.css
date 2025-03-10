@@ -1,12 +1,9 @@
-
-body {
-    background-color: black;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 .container {
 	width: 100vmin;
     min-height: 30vmin;
-	background-color: rgb(52,53,65);
+	background-color: #212121;
 	padding: 50px 30px;
 	position: absolute;
 	transform: translate(-50%, -50%);
@@ -14,28 +11,67 @@ body {
 	top: 50%;
 	left: 50%;
 	border-radius: 15px;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 30px rgba(100, 100, 100, 0.15);
+    z-index: 1;
 }
 
 button {
 	color:#000000;
-	background-color: #f0f0f0;
-	border: none;
-	border-radius: 5px;
-	padding: 10px 30px;
-	font-size: 14px;
+	background-color: #eeeeee;
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+    font-size: 16px;
+    border: solid;
+    border-color: rgb(182, 182, 182);
+	border-radius: 10px;
     margin: 10px;
-  }
-
-button:active {
-    transform: scale(0.95); /* Кнопка немного уменьшается */
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2); /* Тень внутрь */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0px 7px 0px rgb(182, 182, 182); /* Имитация нижней границы */
 }
 
-.button-container {
+button:hover {
+    box-shadow: 0px 10px 0px rgb(182, 182, 182); 
+    transform: translateY(-3px);
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 0px 3px 0px rgb(182, 182, 182);
+}
+
+
+.reset-btn {
+	color: white;
+	background: none;
+	size: 20;
+}
+
+
+.rotate-360 {
+    transform: rotate(360deg);
+    transition: transform 1s linear;
+  }
+
+.blur {
+	position: absolute;
+    inset: 5px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 3;
+}
+
+.controls-container {
     position: absolute;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    z-index: 2;
+    gap: 15px;
 }
 
